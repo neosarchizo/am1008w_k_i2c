@@ -21,12 +21,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
-#include "cm1106_i2c.h"
+#include "am1008w_k_i2c.h"
 
 /**
  * Start CM1106 I2C library
  */
-void CM1106_I2C::begin(TwoWire &wirePort)
+void AM1008W_K_I2C::begin(TwoWire &wirePort)
 {
   _i2cPort = &wirePort; //Grab which port the user wants us to use
 
@@ -39,7 +39,7 @@ void CM1106_I2C::begin(TwoWire &wirePort)
  * Read result of measuring
  * @return Status
  */
-uint8_t CM1106_I2C::get_status()
+uint8_t AM1008W_K_I2C::get_status()
 {
   return status;
 }
@@ -51,7 +51,7 @@ uint8_t CM1106_I2C::get_status()
  *         {@code 2} Frame header is different
  *         {@code 3} Checksum is wrong
  */
-uint8_t CM1106_I2C::measure_result()
+uint8_t AM1008W_K_I2C::measure_result()
 {
   _i2cPort->beginTransmission(CM1106_I2C_ADDRESS);
   _i2cPort->write(CM1106_I2C_CMD_MEASURE_RESULT);
@@ -122,7 +122,7 @@ uint8_t CM1106_I2C::measure_result()
  *         {@code 5} period is not between 1 and 15
  *         {@code 6} concentration_value is not between 400 and 1499
  */
-uint8_t CM1106_I2C::auto_zero_setting(uint8_t zero_setting_switch, uint8_t period, uint16_t concentration_value)
+uint8_t AM1008W_K_I2C::auto_zero_setting(uint8_t zero_setting_switch, uint8_t period, uint16_t concentration_value)
 {
   if (zero_setting_switch != 0 && zero_setting_switch != 2)
   {
@@ -235,7 +235,7 @@ uint8_t CM1106_I2C::auto_zero_setting(uint8_t zero_setting_switch, uint8_t perio
  *         {@code 3} Checksum is wrong
  *         {@code 4} adjust_value is not between 400 and 1500
  */
-uint8_t CM1106_I2C::calibration(uint16_t adjust_value)
+uint8_t AM1008W_K_I2C::calibration(uint16_t adjust_value)
 {
 
   if (adjust_value < 400 || 1500 < adjust_value)
@@ -314,7 +314,7 @@ uint8_t CM1106_I2C::calibration(uint16_t adjust_value)
  *         {@code 2} Frame header is different
  *         {@code 3} Checksum is wrong
  */
-uint8_t CM1106_I2C::read_serial_number()
+uint8_t AM1008W_K_I2C::read_serial_number()
 {
 
   _i2cPort->beginTransmission(CM1106_I2C_ADDRESS);
@@ -393,7 +393,7 @@ uint8_t CM1106_I2C::read_serial_number()
  *         {@code 2} Frame header is different
  *         {@code 3} Checksum is wrong
  */
-uint8_t CM1106_I2C::check_sw_version()
+uint8_t AM1008W_K_I2C::check_sw_version()
 {
 
   _i2cPort->beginTransmission(CM1106_I2C_ADDRESS);
