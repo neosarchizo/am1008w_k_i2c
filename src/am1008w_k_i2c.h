@@ -27,7 +27,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <Arduino.h>
 #include <Wire.h>
 
-#define AM1008W_K_I2C_ADDRESS 0x31
+#define AM1008W_K_I2C_ADDRESS 0x28
 
 // Packet Format
 // [Command][DF0][DF1]...[DFn][CS]
