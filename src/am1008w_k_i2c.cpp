@@ -54,8 +54,8 @@ uint8_t AM1008W_K_I2C::read_data_command()
       break;
   }
 
-  Serial.print("idx : ")
-  Serial.println(idx)
+  Serial.print("idx : ");
+  Serial.println(idx);
 
   return 0;
 }
