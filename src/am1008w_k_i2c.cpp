@@ -50,12 +50,36 @@ uint8_t AM1008W_K_I2C::read_data_command()
   { // slave may send less than requested
     uint8_t b = _i2cPort->read();
     _buffer[idx++] = b;
-    if (idx == 25)
+    if (idx == AM1008W_K_I2C_LEN_READ_DATA_COMMAND) {
       break;
+    }
   }
 
-  Serial.print("idx : ");
-  Serial.println(idx);
+  if (idx < AM1008W_K_I2C_LEN_READ_DATA_COMMAND)
+  {
+#ifdef AM1008W_K_I2C_DEBUG
+    Serial.println("AM1008W_K_I2C::read_data_command : buffer is short!");
+#endif
+    return 1;
+  }
 
+  if (_buffer[0] != AM1008W_K_I2C_FRAME_STX)
+  {
+#ifdef AM1008W_K_I2C_DEBUG
+    Serial.print("AM1008W_K_I2C::read_data_command : frame STX is different ");
+    Serial.println(_buffer[0], HEX);
+#endif
+    return 2;
+  }
+
+  if (_buffer[1] != AM1008W_K_I2C_LEN_READ_DATA_COMMAND) {
+#ifdef AM1008W_K_I2C_DEBUG
+    Serial.println("AM1008W_K_I2C::read_data_command : frame length is not AM1008W_K_I2C_LEN_READ_DATA_COMMAND");
+#endif
+    return 3;
+  }
+
+  pm_operation_mode = _buffer[2];
+  
   return 0;
 }

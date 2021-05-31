@@ -29,6 +29,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define AM1008W_K_I2C_ADDRESS 0x28
 
+#define AM1008W_K_I2C_FRAME_STX 0x16
+#define AM1008W_K_I2C_LEN_READ_DATA_COMMAND 25
+
+// #define AM1008W_K_I2C_DEBUG
+
 class AM1008W_K_I2C
 {
 
@@ -38,7 +43,7 @@ public:
   uint8_t send_command_data();
   uint8_t read_data_command();
 
-  uint8_t status;
+  uint8_t pm_operation_mode;
 
 private:
   uint8_t _buffer[32];
