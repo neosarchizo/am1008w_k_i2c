@@ -45,6 +45,18 @@ public:
 
   uint8_t pm_operation_mode;
 
+  uint16_t co2;
+  uint16_t voc;
+  uint16_t humidity;
+  uint16_t temperature;
+  uint16_t pm1p0;
+  uint16_t pm2p5;
+  uint16_t pm10;
+  uint16_t voc_now_r_ref_r;
+  uint16_t voc_ref_r;
+  uint16_t voc_now_r;
+  uint8_t pm_sensor_status_alarm;
+  
 private:
   uint8_t _buffer[32];
   TwoWire *_i2cPort; //The generic connection to user's chosen I2C hardware
