@@ -35,7 +35,6 @@ void AM1008W_K_I2C::begin(TwoWire &wirePort)
   _i2cPort->begin();
 }
 
-
 uint8_t AM1008W_K_I2C::send_command_data()
 {
   return 0;
@@ -50,7 +49,8 @@ uint8_t AM1008W_K_I2C::read_data_command()
   { // slave may send less than requested
     uint8_t b = _i2cPort->read();
     _buffer[idx++] = b;
-    if (idx == AM1008W_K_I2C_LEN_READ_DATA_COMMAND) {
+    if (idx == AM1008W_K_I2C_LEN_READ_DATA_COMMAND)
+    {
       break;
     }
   }
@@ -72,14 +72,35 @@ uint8_t AM1008W_K_I2C::read_data_command()
     return 2;
   }
 
-  if (_buffer[1] != AM1008W_K_I2C_LEN_READ_DATA_COMMAND) {
+  if (_buffer[1] != AM1008W_K_I2C_LEN_READ_DATA_COMMAND)
+  {
 #ifdef AM1008W_K_I2C_DEBUG
     Serial.println("AM1008W_K_I2C::read_data_command : frame length is not AM1008W_K_I2C_LEN_READ_DATA_COMMAND");
 #endif
     return 3;
   }
 
+  uint8_t check_code = _buffer[0];
+
+  for (uint8_t i = 1; i < AM1008W_K_I2C_LEN_READ_DATA_COMMAND - 1; i++)
+  {
+    check_code ^= _buffer[i];
+  }
+
+  if (_buffer[AM1008W_K_I2C_LEN_READ_DATA_COMMAND - 1] != check_code)
+  {
+#ifdef PM2008_I2C_DEBUG
+    Serial.print("AM1008W_K_I2C::read_data_command : check code is different - _buffer[");
+    Serial.print(AM1008W_K_I2C_LEN_READ_DATA_COMMAND - 1);
+    Serial.print("] : ");
+    Serial.print(_buffer[AM1008W_K_I2C_LEN_READ_DATA_COMMAND - 1], HEX);
+    Serial.print(", check_code : ");
+    Serial.println(check_code, HEX);
+#endif
+    return 4;
+  }
+
   pm_operation_mode = _buffer[2];
-  
+
   return 0;
 }
