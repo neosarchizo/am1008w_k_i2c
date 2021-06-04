@@ -43,6 +43,20 @@ public:
   uint8_t send_command_data();
   uint8_t read_data_command();
 
+  uint16_t get_co2(void);
+  uint16_t get_voc(void);
+  uint16_t get_humidity(void);
+  uint16_t get_temperature(void);
+  uint16_t get_pm1p0(void);
+  uint16_t get_pm2p5(void);
+  uint16_t get_pm10(void);
+  uint16_t get_voc_now_r_ref_r(void);
+  uint16_t get_voc_ref_r(void);
+  uint16_t get_voc_now_r(void);
+  uint8_t get_pm_sensor_status_alarm(void);
+
+  
+
   uint8_t pm_operation_mode;
 
   uint16_t co2;
