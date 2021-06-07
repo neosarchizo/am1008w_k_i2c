@@ -11,7 +11,7 @@ void setup() {
 }
 
 void loop() {
-  uint8_t ret = am1008w_k_i2c.measure_result();
+  uint8_t ret = am1008w_k_i2c.read_data_command();
 
   if (ret == 0) {
     Serial.print("Co2 : ");
