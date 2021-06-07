@@ -1,99 +1,66 @@
-#include <cm1106_i2c.h>
+#include <am1008w_k_i2c.h>
 
-CM1106_I2C cm1106_i2c;
+AM1008W_K_I2C am1008w_k_i2c;
 
-// #define CM1107
+// #define DEBUG
 
 void setup() {
-  cm1106_i2c.begin();
+  am1008w_k_i2c.begin();
   Serial.begin(9600);
-  delay(1000);
-  cm1106_i2c.read_serial_number();
-  delay(1000);
-  cm1106_i2c.check_sw_version();
   delay(1000);
 }
 
 void loop() {
-  uint8_t ret = cm1106_i2c.measure_result();
+  uint8_t ret = am1008w_k_i2c.measure_result();
 
   if (ret == 0) {
     Serial.print("Co2 : ");
-    Serial.println(cm1106_i2c.co2);
-    Serial.println("Status >>");
+    Serial.println(am1008w_k_i2c.co2);
+    Serial.print("VOC : ");
+    Serial.println(am1008w_k_i2c.voc);
+    Serial.print("Humidity : ");
+    Serial.println(am1008w_k_i2c.humidity);
+    Serial.print("Temperature : ");
+    Serial.println(am1008w_k_i2c.temperature);
+    Serial.print("PM1.0 : ");
+    Serial.println(am1008w_k_i2c.pm1p0);
+    Serial.print("PM2.5 : ");
+    Serial.println(am1008w_k_i2c.pm2p5);
+    Serial.print("PM10 : ");
+    Serial.println(am1008w_k_i2c.pm10);
+    Serial.print("VOC Now R / Ref. R (%) : ");
+    Serial.println(am1008w_k_i2c.voc_now_r_ref_r);
+    Serial.print("VOC Ref. R Value : ");
+    Serial.println(am1008w_k_i2c.voc_ref_r);
+    Serial.print("VOC Now R Value : ");
+    Serial.println(am1008w_k_i2c.voc_now_r);
+    Serial.print("PM sensor status alarm : ");
+    Serial.println(am1008w_k_i2c.pm_sensor_status_alarm);
 
-
-#if defined(CM1107)
-    if (cm1106_i2c.status & (1 << CM1106_I2C_STATUS_CM1107_PREHEATING)) {
-      Serial.println("Preheating");
-    } else {
-      Serial.println("Preheat complete");
-    }
-
-    if (cm1106_i2c.status & (1 << CM1106_I2C_STATUS_CM1107_OPERATING_NORMAL)) {
-      Serial.println("Sensor Error");
-    } else {
-      Serial.println("Operating normal");
-    }
-
-    if (cm1106_i2c.status & (1 << CM1106_I2C_STATUS_CM1107_OVER_MEASUREMENT_RANGE)) {
-      Serial.println("Over Measurement Range");
-    } else {
-      Serial.println("Normal Measurement Range");
-    }
-
-    if (cm1106_i2c.status & (1 << CM1106_I2C_STATUS_CM1107_LESS_THAN_MEASUREMENT_RANGE)) {
-      Serial.println("Less than Measurement Range");
-    } else {
-      Serial.println("Normal Measurement Range");
-    }
-
-    if (cm1106_i2c.status & (1 << CM1106_I2C_STATUS_CM1107_CALIBRATED)) {
-      Serial.println("Non-calibrated");
-    } else {
-      Serial.println("Calibrated");
-    }
-
-    if (cm1106_i2c.status & (1 << CM1106_I2C_STATUS_CM1107_LIGHT_AGING)) {
-      Serial.println("Light Aging");
-    } else {
-      Serial.println("Light Normal");
-    }
-
-    if (cm1106_i2c.status & (1 << CM1106_I2C_STATUS_CM1107_DRIFT)) {
-      Serial.println("Drift");
-    } else {
-      Serial.println("Non-Drift");
-    }
-
-    
-#else
-    switch (cm1106_i2c.status) {
-      case CM1106_I2C_STATUS_PREHEATING: {
-          Serial.println("Preheating");
-          break;
-        }
-      case CM1106_I2C_STATUS_NORMAL_OPERATION: {
-          Serial.println("Normal operation");
-          break;
-        }
-      case CM1106_I2C_STATUS_OPERATING_TROUBLE: {
-          Serial.println("Operating trouble");
-          break;
-        }
-      case CM1106_I2C_STATUS_OUT_OF_FS: {
-          Serial.println("Out of FS");
-          break;
-        }
-      case CM1106_I2C_STATUS_NON_CALIBRATED: {
-          Serial.println("Non calibrated");
-          break;
-        }
-    }
+#if defined(DEBUG)
+    // switch (am1008w_k_i2c.status) {
+    //   case CM1106_I2C_STATUS_PREHEATING: {
+    //       Serial.println("Preheating");
+    //       break;
+    //     }
+    //   case CM1106_I2C_STATUS_NORMAL_OPERATION: {
+    //       Serial.println("Normal operation");
+    //       break;
+    //     }
+    //   case CM1106_I2C_STATUS_OPERATING_TROUBLE: {
+    //       Serial.println("Operating trouble");
+    //       break;
+    //     }
+    //   case CM1106_I2C_STATUS_OUT_OF_FS: {
+    //       Serial.println("Out of FS");
+    //       break;
+    //     }
+    //   case CM1106_I2C_STATUS_NON_CALIBRATED: {
+    //       Serial.println("Non calibrated");
+    //       break;
+    //     }
+    // }
 #endif
-    
-
-
     
   }
   delay(1000);
