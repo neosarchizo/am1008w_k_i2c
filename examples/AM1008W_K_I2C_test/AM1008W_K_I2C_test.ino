@@ -35,7 +35,7 @@ void loop() {
     Serial.print("VOC Now R Value : ");
     Serial.println(am1008w_k_i2c.voc_now_r);
     
-    Serial.println("PM sensor status alarm >>");
+    Serial.println("PM sensor status alarm : (0 = false, 1 = true) >>");
     Serial.print("Fan at high revolving speed : ");
     Serial.println(am1008w_k_i2c.pm_sensor_status_alarm.bits.fan_at_high_revolving_speed);
     Serial.print("Fan at low revolving speed : ");
