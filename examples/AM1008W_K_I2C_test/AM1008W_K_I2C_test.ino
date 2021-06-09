@@ -14,6 +14,9 @@ void loop() {
   uint8_t ret = am1008w_k_i2c.read_data_command();
 
   if (ret == 0) {
+    Serial.print("PM sensor operation mode : ");
+    Serial.println(am1008w_k_i2c.pm_operation_mode, HEX);
+
     Serial.print("Co2 : ");
     Serial.println(am1008w_k_i2c.co2);
     Serial.print("VOC : ");
