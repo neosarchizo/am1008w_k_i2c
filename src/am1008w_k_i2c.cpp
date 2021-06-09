@@ -109,7 +109,7 @@ uint8_t AM1008W_K_I2C::read_data_command()
   co2 = (_buffer[3] << 8) + _buffer[4];
   voc = (_buffer[5] << 8) + _buffer[6];
   humidity = (float)((_buffer[7] << 8) + _buffer[8]) / 10;
-  temperature = (float)((_buffer[9] << 8) + _buffer[10]) / 10;
+  temperature = (float)((_buffer[9] << 8) + _buffer[10] - 500) / 10;
   pm1p0 = (_buffer[11] << 8) + _buffer[12];
   pm2p5 = (_buffer[13] << 8) + _buffer[14];
   pm10 = (_buffer[15] << 8) + _buffer[16];
