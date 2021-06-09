@@ -36,13 +36,13 @@ void loop() {
     Serial.println(am1008w_k_i2c.voc_now_r);
     
     Serial.println("PM sensor status alarm >>");
-    Serial.print("Fan at high revolving speed");
+    Serial.print("Fan at high revolving speed : ");
     Serial.println(am1008w_k_i2c.pm_sensor_status_alarm.bits.fan_at_high_revolving_speed);
-    Serial.print("Fan at low revolving speed");
+    Serial.print("Fan at low revolving speed : ");
     Serial.println(am1008w_k_i2c.pm_sensor_status_alarm.bits.fan_at_low_revolving_speed);
-    Serial.print("Working temperature is high");
+    Serial.print("Working temperature is high : ");
     Serial.println(am1008w_k_i2c.pm_sensor_status_alarm.bits.working_temperature_is_high);
-    Serial.print("Working temperature is low");
+    Serial.print("Working temperature is low : ");
     Serial.println(am1008w_k_i2c.pm_sensor_status_alarm.bits.working_temperature_is_low);
   }
   delay(1000);
