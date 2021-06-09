@@ -108,8 +108,8 @@ uint8_t AM1008W_K_I2C::read_data_command()
   pm_operation_mode = _buffer[2];
   co2 = (_buffer[3] << 8) + _buffer[4];
   voc = (_buffer[5] << 8) + _buffer[6];
-  humidity = (_buffer[7] << 8) + _buffer[8];
-  temperature = (_buffer[9] << 8) + _buffer[10];
+  humidity = (float)((_buffer[7] << 8) + _buffer[8]) / 10;
+  temperature = (float)((_buffer[9] << 8) + _buffer[10]) / 10;
   pm1p0 = (_buffer[11] << 8) + _buffer[12];
   pm2p5 = (_buffer[13] << 8) + _buffer[14];
   pm10 = (_buffer[15] << 8) + _buffer[16];
@@ -125,7 +125,8 @@ uint8_t AM1008W_K_I2C::read_data_command()
  * CO2
  * @return CO2
  */
-uint16_t AM1008W_K_I2C::get_co2(void){
+uint16_t AM1008W_K_I2C::get_co2(void)
+{
   return co2;
 }
 
@@ -133,7 +134,8 @@ uint16_t AM1008W_K_I2C::get_co2(void){
  * VOC
  * @return VOC
  */
-uint16_t AM1008W_K_I2C::get_voc(void){
+uint16_t AM1008W_K_I2C::get_voc(void)
+{
   return voc;
 }
 
@@ -141,7 +143,8 @@ uint16_t AM1008W_K_I2C::get_voc(void){
  * Humidity
  * @return Humidity
  */
-uint16_t AM1008W_K_I2C::get_humidity(void){
+float AM1008W_K_I2C::get_humidity(void)
+{
   return humidity;
 }
 
@@ -149,7 +152,8 @@ uint16_t AM1008W_K_I2C::get_humidity(void){
  * Temperature
  * @return Temperature
  */
-uint16_t AM1008W_K_I2C::get_temperature(void){
+float AM1008W_K_I2C::get_temperature(void)
+{
   return temperature;
 }
 
@@ -157,7 +161,8 @@ uint16_t AM1008W_K_I2C::get_temperature(void){
  * PM1.0
  * @return PM1.0
  */
-uint16_t AM1008W_K_I2C::get_pm1p0(void){
+uint16_t AM1008W_K_I2C::get_pm1p0(void)
+{
   return pm1p0;
 }
 
@@ -165,7 +170,8 @@ uint16_t AM1008W_K_I2C::get_pm1p0(void){
  * PM2.5
  * @return PM2.5
  */
-uint16_t AM1008W_K_I2C::get_pm2p5(void){
+uint16_t AM1008W_K_I2C::get_pm2p5(void)
+{
   return pm2p5;
 }
 
@@ -173,7 +179,8 @@ uint16_t AM1008W_K_I2C::get_pm2p5(void){
  * PM10
  * @return PM10
  */
-uint16_t AM1008W_K_I2C::get_pm10(void){
+uint16_t AM1008W_K_I2C::get_pm10(void)
+{
   return pm10;
 }
 
@@ -181,7 +188,8 @@ uint16_t AM1008W_K_I2C::get_pm10(void){
  * VOC Now R / Ref. R (%)
  * @return VOC Now R / Ref. R (%)
  */
-uint16_t AM1008W_K_I2C::get_voc_now_r_ref_r(void){
+uint16_t AM1008W_K_I2C::get_voc_now_r_ref_r(void)
+{
   return voc_now_r_ref_r;
 }
 
@@ -189,7 +197,8 @@ uint16_t AM1008W_K_I2C::get_voc_now_r_ref_r(void){
  * VOC Ref. R Value
  * @return VOC Ref. R Value
  */
-uint16_t AM1008W_K_I2C::get_voc_ref_r(void){
+uint16_t AM1008W_K_I2C::get_voc_ref_r(void)
+{
   return voc_ref_r;
 }
 
@@ -197,7 +206,8 @@ uint16_t AM1008W_K_I2C::get_voc_ref_r(void){
  * VOC Now R Value
  * @return VOC Now R Value
  */
-uint16_t AM1008W_K_I2C::get_voc_now_r(void){
+uint16_t AM1008W_K_I2C::get_voc_now_r(void)
+{
   return voc_now_r;
 }
 
@@ -205,6 +215,7 @@ uint16_t AM1008W_K_I2C::get_voc_now_r(void){
  * PM sensor status alarm
  * @return PM sensor status alarm
  */
-am1008w_k_i2c_status AM1008W_K_I2C::get_pm_sensor_status_alarm(void){
+am1008w_k_i2c_status AM1008W_K_I2C::get_pm_sensor_status_alarm(void)
+{
   return pm_sensor_status_alarm;
 }

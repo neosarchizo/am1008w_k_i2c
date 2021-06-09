@@ -57,8 +57,8 @@ public:
 
   uint16_t get_co2(void);
   uint16_t get_voc(void);
-  uint16_t get_humidity(void);
-  uint16_t get_temperature(void);
+  float get_humidity(void);
+  float get_temperature(void);
   uint16_t get_pm1p0(void);
   uint16_t get_pm2p5(void);
   uint16_t get_pm10(void);
@@ -71,8 +71,8 @@ public:
 
   uint16_t co2;
   uint16_t voc;
-  uint16_t humidity;
-  uint16_t temperature;
+  float humidity;
+  float temperature;
   uint16_t pm1p0;
   uint16_t pm2p5;
   uint16_t pm10;
