@@ -116,7 +116,7 @@ uint8_t AM1008W_K_I2C::read_data_command()
   voc_now_r_ref_r = (_buffer[17] << 8) + _buffer[18];
   voc_ref_r = (_buffer[19] << 8) + _buffer[20];
   voc_now_r = (_buffer[21] << 8) + _buffer[22];
-  pm_sensor_status_alarm = _buffer[23];
+  pm_sensor_status_alarm.value = _buffer[23];
 
   return 0;
 }
@@ -205,6 +205,6 @@ uint16_t AM1008W_K_I2C::get_voc_now_r(void){
  * PM sensor status alarm
  * @return PM sensor status alarm
  */
-uint8_t AM1008W_K_I2C::get_pm_sensor_status_alarm(void){
+am1008w_k_i2c_status AM1008W_K_I2C::get_pm_sensor_status_alarm(void){
   return pm_sensor_status_alarm;
 }

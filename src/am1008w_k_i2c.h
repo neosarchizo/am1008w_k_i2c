@@ -34,6 +34,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // #define AM1008W_K_I2C_DEBUG
 
+typedef union
+{
+    uint8_t value;
+    struct
+    {
+        uint8_t fan_at_high_revolving_speed:1;
+        uint8_t fan_at_low_revolving_speed:1;
+        uint8_t working_temperature_is_high:1;
+        uint8_t working_temperature_is_low:1;
+    } bits;
+} am1008w_k_i2c_status;
+
 class AM1008W_K_I2C
 {
 
@@ -53,9 +65,7 @@ public:
   uint16_t get_voc_now_r_ref_r(void);
   uint16_t get_voc_ref_r(void);
   uint16_t get_voc_now_r(void);
-  uint8_t get_pm_sensor_status_alarm(void);
-
-  
+  am1008w_k_i2c_status get_pm_sensor_status_alarm(void);
 
   uint8_t pm_operation_mode;
 
@@ -69,7 +79,7 @@ public:
   uint16_t voc_now_r_ref_r;
   uint16_t voc_ref_r;
   uint16_t voc_now_r;
-  uint8_t pm_sensor_status_alarm;
+  am1008w_k_i2c_status pm_sensor_status_alarm;
   
 private:
   uint8_t _buffer[32];

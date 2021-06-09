@@ -2,7 +2,7 @@
 
 AM1008W_K_I2C am1008w_k_i2c;
 
-// #define DEBUG
+// #define AM1008W_K_I2C_DEBUG
 
 void setup() {
   am1008w_k_i2c.begin();
@@ -34,34 +34,16 @@ void loop() {
     Serial.println(am1008w_k_i2c.voc_ref_r);
     Serial.print("VOC Now R Value : ");
     Serial.println(am1008w_k_i2c.voc_now_r);
-    Serial.print("PM sensor status alarm : ");
-    Serial.println(am1008w_k_i2c.pm_sensor_status_alarm);
-
-#if defined(DEBUG)
-    // switch (am1008w_k_i2c.status) {
-    //   case CM1106_I2C_STATUS_PREHEATING: {
-    //       Serial.println("Preheating");
-    //       break;
-    //     }
-    //   case CM1106_I2C_STATUS_NORMAL_OPERATION: {
-    //       Serial.println("Normal operation");
-    //       break;
-    //     }
-    //   case CM1106_I2C_STATUS_OPERATING_TROUBLE: {
-    //       Serial.println("Operating trouble");
-    //       break;
-    //     }
-    //   case CM1106_I2C_STATUS_OUT_OF_FS: {
-    //       Serial.println("Out of FS");
-    //       break;
-    //     }
-    //   case CM1106_I2C_STATUS_NON_CALIBRATED: {
-    //       Serial.println("Non calibrated");
-    //       break;
-    //     }
-    // }
-#endif
     
+    Serial.println("PM sensor status alarm >>");
+    Serial.print("Fan at high revolving speed");
+    Serial.println(am1008w_k_i2c.pm_sensor_status_alarm.bits.fan_at_high_revolving_speed);
+    Serial.print("Fan at low revolving speed");
+    Serial.println(am1008w_k_i2c.pm_sensor_status_alarm.bits.fan_at_low_revolving_speed);
+    Serial.print("Working temperature is high");
+    Serial.println(am1008w_k_i2c.pm_sensor_status_alarm.bits.working_temperature_is_high);
+    Serial.print("Working temperature is low");
+    Serial.println(am1008w_k_i2c.pm_sensor_status_alarm.bits.working_temperature_is_low);
   }
   delay(1000);
 }
