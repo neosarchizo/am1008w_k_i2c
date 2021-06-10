@@ -14,8 +14,33 @@ void loop() {
   uint8_t ret = am1008w_k_i2c.read_data_command();
 
   if (ret == 0) {
-    Serial.print("PM sensor operation mode : ");
-    Serial.println(am1008w_k_i2c.pm_operation_mode, HEX);
+    Serial.println("PM sensor operation mode >>");
+    
+    switch (am1008w_k_i2c.pm_operation_mode)
+    {
+    case AM1008W_K_I2C_PSO_CLOSE: {
+      Serial.prinln("Close");
+      break;
+    }
+    case AM1008W_K_I2C_PSO_TIMING_MEASURING_MODE: {
+      Serial.prinln("Timing measuring mode");
+      break;
+    }
+    case AM1008W_K_I2C_PSO_DYNAMIC_MEASURING_MODE: {
+      Serial.prinln("Dynamic measuring mode");
+      break;
+    }
+    case AM1008W_K_I2C_PSO_CONTINOUS_MEASURING_MODE: {
+      Serial.prinln("Continuous measuring mode");
+      break;
+    }
+    case AM1008W_K_I2C_PSO_SINGLE_MEASURING_MODE: {
+      Serial.prinln("Single measuring mode");
+      break;
+    }
+    default:
+      break;
+    }
 
     Serial.print("Co2 : ");
     Serial.println(am1008w_k_i2c.co2);

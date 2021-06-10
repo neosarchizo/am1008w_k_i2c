@@ -34,6 +34,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // #define AM1008W_K_I2C_DEBUG
 
+#define AM1008W_K_I2C_PSO_CLOSE 0x00
+#define AM1008W_K_I2C_PSO_TIMING_MEASURING_MODE 0x05
+#define AM1008W_K_I2C_PSO_DYNAMIC_MEASURING_MODE 0x06
+#define AM1008W_K_I2C_PSO_CONTINOUS_MEASURING_MODE 0x0C
+#define AM1008W_K_I2C_PSO_SINGLE_MEASURING_MODE 0x0D
+
 typedef union
 {
     uint8_t value;
