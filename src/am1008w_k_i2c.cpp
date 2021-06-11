@@ -40,7 +40,7 @@ void AM1008W_K_I2C::begin(TwoWire &wirePort)
   _i2cPort->begin();
 }
 
-uint8_t AM1008W_K_I2C::send_command_data()
+uint8_t AM1008W_K_I2C::send_command_data(uint8_t ctrl, uint16_t data)
 {
   return 0;
 }

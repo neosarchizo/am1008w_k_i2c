@@ -40,6 +40,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define AM1008W_K_I2C_PSO_CONTINOUS_MEASURING_MODE 0x0C
 #define AM1008W_K_I2C_PSO_SINGLE_MEASURING_MODE 0x0D
 
+#define AM1008W_K_I2C_CTRL_CLOSE_MEASUREMENT 0x01
+#define AM1008W_K_I2C_CTRL_OPEN_MEASUREMENT 0x02
+#define AM1008W_K_I2C_CTRL_CO2_CAOLIBRATION 0x03
+#define AM1008W_K_I2C_CTRL_SET_UP_TIMING_MEASUREMENT 0x05
+#define AM1008W_K_I2C_CTRL_SET_UP_DYNAMIC_MEASUREMENT 0x06
+#define AM1008W_K_I2C_CTRL_SET_UP_PM_CALIBRATION_COEFFICIENT 0x07
+#define AM1008W_K_I2C_CTRL_SET_UP_CONTINUOUSLY_MEASUREMENT 0x0C
+#define AM1008W_K_I2C_CTRL_SET_UP_SINGLE_MEASUREMENT 0x0D
+
 typedef union
 {
     uint8_t value;
@@ -58,7 +67,7 @@ class AM1008W_K_I2C
 public:
   void begin(TwoWire &wirePort = Wire); //By default use Wire port
   
-  uint8_t send_command_data();
+  uint8_t send_command_data(uint8_t ctrl, uint16_t data);
   uint8_t read_data_command();
 
   uint16_t get_co2(void);
