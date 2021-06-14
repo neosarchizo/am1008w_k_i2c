@@ -42,7 +42,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define AM1008W_K_I2C_CTRL_CLOSE_MEASUREMENT 0x01
 #define AM1008W_K_I2C_CTRL_OPEN_MEASUREMENT 0x02
-#define AM1008W_K_I2C_CTRL_CO2_CAOLIBRATION 0x03
+#define AM1008W_K_I2C_CTRL_CO2_CALIBRATION 0x03
 #define AM1008W_K_I2C_CTRL_SET_UP_TIMING_MEASUREMENT 0x05
 #define AM1008W_K_I2C_CTRL_SET_UP_DYNAMIC_MEASUREMENT 0x06
 #define AM1008W_K_I2C_CTRL_SET_UP_PM_CALIBRATION_COEFFICIENT 0x07
@@ -68,7 +68,18 @@ public:
   void begin(TwoWire &wirePort = Wire); //By default use Wire port
   
   uint8_t send_command_data(uint8_t ctrl, uint16_t data);
-  uint8_t read_data_command();
+
+  uint8_t pm_sensor_mode_close(void);
+  uint8_t pm_sensor_mode_open(void);
+  uint8_t pm_sensor_mode_single_measurement(uint16_t range);
+  uint8_t pm_sensor_mode_cotinuously_measurement(void);
+  uint8_t pm_sensor_mode_timing_measurement(uint16_t range);
+  uint8_t pm_sensor_mode_dynamic_measurment(void);
+
+  uint8_t set_pm_coefficient(uint8_t range);
+  uint8_t calibrate_co2(uint16_t range);
+
+  uint8_t read_data_command(void);
 
   uint16_t get_co2(void);
   uint16_t get_voc(void);
