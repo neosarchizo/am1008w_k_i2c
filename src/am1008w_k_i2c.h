@@ -67,8 +67,6 @@ class AM1008W_K_I2C
 public:
   void begin(TwoWire &wirePort = Wire); //By default use Wire port
   
-  uint8_t send_command_data(uint8_t ctrl, uint16_t data);
-
   uint8_t pm_sensor_mode_close(void);
   uint8_t pm_sensor_mode_open(void);
   uint8_t pm_sensor_mode_single_measurement(uint16_t range);
@@ -110,6 +108,8 @@ public:
 private:
   uint8_t _buffer[32];
   TwoWire *_i2cPort; //The generic connection to user's chosen I2C hardware
+
+  uint8_t send_command_data(uint8_t ctrl, uint16_t data);
 };
 
 #endif

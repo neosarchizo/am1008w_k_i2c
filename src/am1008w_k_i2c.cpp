@@ -42,6 +42,28 @@ void AM1008W_K_I2C::begin(TwoWire &wirePort)
 
 uint8_t AM1008W_K_I2C::send_command_data(uint8_t ctrl, uint16_t data)
 {
+  uint8_t tx_data[7] = {0};
+
+  tx_data[0] = AM1008W_K_I2C_FRAME_STX;
+  tx_data[1] = 7; // FRAME LENGTH
+  tx_data[2] = ctrl; // Control Command of the PM Sensor
+  tx_data[3] = (data >> 8) & 0xff; // high byte of data
+  tx_data[4] = data & 0xff; // low byte of data
+  tx_data[5] = 0;
+
+  uint8_t cs = tx_data[0];
+
+  for (uint8_t i = 1; i < 6; i++)
+  {
+    cs ^= tx_data[i];
+  }
+
+  tx_data[6] = cs;
+  
+  _i2cPort->beginTransmission(AM1008W_K_I2C_ADDRESS);
+  _i2cPort->write(tx_data, 7);
+  _i2cPort->endTransmission();
+
   return 0;
 }
 
