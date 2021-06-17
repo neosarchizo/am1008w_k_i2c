@@ -69,42 +69,42 @@ uint8_t AM1008W_K_I2C::send_command_data(uint8_t ctrl, uint16_t data)
 
 uint8_t AM1008W_K_I2C::pm_sensor_mode_close(void)
 {
-  return 0;
+  return send_command_data(AM1008W_K_I2C_CTRL_CLOSE_MEASUREMENT, 0);
 }
 
 uint8_t AM1008W_K_I2C::pm_sensor_mode_open(void)
 {
-  return 0;
+  return send_command_data(AM1008W_K_I2C_CTRL_OPEN_MEASUREMENT, 0);
 }
 
 uint8_t AM1008W_K_I2C::pm_sensor_mode_single_measurement(uint16_t range)
 {
-  return 0;
+  return send_command_data(AM1008W_K_I2C_CTRL_SET_UP_SINGLE_MEASUREMENT, range);
 }
 
 uint8_t AM1008W_K_I2C::pm_sensor_mode_cotinuously_measurement(void)
 {
-  return 0;
+  return send_command_data(AM1008W_K_I2C_CTRL_SET_UP_CONTINUOUSLY_MEASUREMENT, 0);
 }
 
 uint8_t AM1008W_K_I2C::pm_sensor_mode_timing_measurement(uint16_t range)
 {
-  return 0;
+  return send_command_data(AM1008W_K_I2C_CTRL_SET_UP_TIMING_MEASUREMENT, range);
 }
 
 uint8_t AM1008W_K_I2C::pm_sensor_mode_dynamic_measurment(void)
 {
-  return 0;
+  return send_command_data(AM1008W_K_I2C_CTRL_SET_UP_DYNAMIC_MEASUREMENT, 0);
 }
 
 uint8_t AM1008W_K_I2C::set_pm_coefficient(uint8_t range)
 {
-  return 0;
+  return send_command_data(AM1008W_K_I2C_CTRL_SET_UP_PM_CALIBRATION_COEFFICIENT, range);
 }
 
 uint8_t AM1008W_K_I2C::calibrate_co2(uint16_t range)
 {
-  return 0;
+  return send_command_data(AM1008W_K_I2C_CTRL_CO2_CALIBRATION, range);
 }
 
 uint8_t AM1008W_K_I2C::read_data_command(void)
