@@ -167,18 +167,18 @@ uint8_t AM1008W_K_I2C::read_data_command(void)
     return 4;
   }
 
-  pm_operation_mode = _buffer[2];
-  co2 = (_buffer[3] << 8) + _buffer[4];
-  voc = (_buffer[5] << 8) + _buffer[6];
-  humidity = (float)((_buffer[7] << 8) + _buffer[8]) / 10;
-  temperature = (float)((_buffer[9] << 8) + _buffer[10] - 500) / 10;
-  pm1p0 = (_buffer[11] << 8) + _buffer[12];
-  pm2p5 = (_buffer[13] << 8) + _buffer[14];
-  pm10 = (_buffer[15] << 8) + _buffer[16];
-  voc_now_r_ref_r = (_buffer[17] << 8) + _buffer[18];
-  voc_ref_r = (_buffer[19] << 8) + _buffer[20];
-  voc_now_r = (_buffer[21] << 8) + _buffer[22];
-  pm_sensor_status_alarm.value = _buffer[23];
+  _pm_operation_mode = _buffer[2];
+  _co2 = (_buffer[3] << 8) + _buffer[4];
+  _voc = (_buffer[5] << 8) + _buffer[6];
+  _humidity = (float)((_buffer[7] << 8) + _buffer[8]) / 10;
+  _temperature = (float)((_buffer[9] << 8) + _buffer[10] - 500) / 10;
+  _pm1p0 = (_buffer[11] << 8) + _buffer[12];
+  _pm2p5 = (_buffer[13] << 8) + _buffer[14];
+  _pm10 = (_buffer[15] << 8) + _buffer[16];
+  _voc_now_r_ref_r = (_buffer[17] << 8) + _buffer[18];
+  _voc_ref_r = (_buffer[19] << 8) + _buffer[20];
+  _voc_now_r = (_buffer[21] << 8) + _buffer[22];
+  _pm_sensor_status_alarm.value = _buffer[23];
 
   return 0;
 }
