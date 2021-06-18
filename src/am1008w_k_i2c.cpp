@@ -4,7 +4,7 @@ am1008w_k_i2c.cpp -- Arduino library to control Cubic AM1008W-K I2C
 Copyright (c) 2018 Neosarchizo.
 All rights reserved.
 
-This file is part of the library CM1106 I2C.
+This file is part of the library AM1108W-K I2C.
 
 AM1008W-K I2C is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

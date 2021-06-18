@@ -1,5 +1,5 @@
 /*
-cm1106_i2c.h -- Arduino library to control Cubic CM1106 I2C
+am1108w_k_i2c.h -- Arduino library to control Cubic AM1108W-K I2C
 
 Copyright (c) 2019 Neosarchizo.
 All rights reserved.
