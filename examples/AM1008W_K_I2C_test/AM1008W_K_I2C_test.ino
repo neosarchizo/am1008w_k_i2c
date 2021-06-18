@@ -16,7 +16,7 @@ void loop() {
   if (ret == 0) {
     Serial.println("PM sensor operation mode >>");
     
-    switch (am1008w_k_i2c.pm_operation_mode)
+    switch (am1008w_k_i2c.get_pm_operation_mode())
     {
     case AM1008W_K_I2C_PSO_CLOSE: {
       Serial.println("Close");
@@ -43,35 +43,35 @@ void loop() {
     }
 
     Serial.print("Co2 : ");
-    Serial.println(am1008w_k_i2c.co2);
+    Serial.println(am1008w_k_i2c.get_co2());
     Serial.print("VOC : ");
-    Serial.println(am1008w_k_i2c.voc);
+    Serial.println(am1008w_k_i2c.get_voc());
     Serial.print("Humidity : ");
-    Serial.println(am1008w_k_i2c.humidity);
+    Serial.println(am1008w_k_i2c.get_humidity());
     Serial.print("Temperature : ");
-    Serial.println(am1008w_k_i2c.temperature);
+    Serial.println(am1008w_k_i2c.get_temperature());
     Serial.print("PM1.0 : ");
-    Serial.println(am1008w_k_i2c.pm1p0);
+    Serial.println(am1008w_k_i2c.get_pm1p0());
     Serial.print("PM2.5 : ");
-    Serial.println(am1008w_k_i2c.pm2p5);
+    Serial.println(am1008w_k_i2c.get_pm2p5());
     Serial.print("PM10 : ");
-    Serial.println(am1008w_k_i2c.pm10);
+    Serial.println(am1008w_k_i2c.get_pm10());
     Serial.print("VOC Now R / Ref. R (%) : ");
-    Serial.println(am1008w_k_i2c.voc_now_r_ref_r);
+    Serial.println(am1008w_k_i2c.get_voc_now_r_ref_r());
     Serial.print("VOC Ref. R Value : ");
-    Serial.println(am1008w_k_i2c.voc_ref_r);
+    Serial.println(am1008w_k_i2c.get_voc_ref_r());
     Serial.print("VOC Now R Value : ");
-    Serial.println(am1008w_k_i2c.voc_now_r);
+    Serial.println(am1008w_k_i2c.get_voc_now_r());
     
     Serial.println("PM sensor status alarm : (0 = false, 1 = true) >>");
     Serial.print("Fan at high revolving speed : ");
-    Serial.println(am1008w_k_i2c.pm_sensor_status_alarm.bits.fan_at_high_revolving_speed);
+    Serial.println(am1008w_k_i2c.get_pm_sensor_status_alarm().bits.fan_at_high_revolving_speed);
     Serial.print("Fan at low revolving speed : ");
-    Serial.println(am1008w_k_i2c.pm_sensor_status_alarm.bits.fan_at_low_revolving_speed);
+    Serial.println(am1008w_k_i2c.get_pm_sensor_status_alarm().bits.fan_at_low_revolving_speed);
     Serial.print("Working temperature is high : ");
-    Serial.println(am1008w_k_i2c.pm_sensor_status_alarm.bits.working_temperature_is_high);
+    Serial.println(am1008w_k_i2c.get_pm_sensor_status_alarm().bits.working_temperature_is_high);
     Serial.print("Working temperature is low : ");
-    Serial.println(am1008w_k_i2c.pm_sensor_status_alarm.bits.working_temperature_is_low);
+    Serial.println(am1008w_k_i2c.get_pm_sensor_status_alarm().bits.working_temperature_is_low);
   }
   delay(1000);
 }

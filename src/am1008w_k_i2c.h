@@ -79,6 +79,7 @@ public:
 
   uint8_t read_data_command(void);
 
+  uint8_t get_pm_operation_mode(void);
   uint16_t get_co2(void);
   uint16_t get_voc(void);
   float get_humidity(void);
@@ -90,24 +91,23 @@ public:
   uint16_t get_voc_ref_r(void);
   uint16_t get_voc_now_r(void);
   am1008w_k_i2c_status get_pm_sensor_status_alarm(void);
-
-  uint8_t pm_operation_mode;
-
-  uint16_t co2;
-  uint16_t voc;
-  float humidity;
-  float temperature;
-  uint16_t pm1p0;
-  uint16_t pm2p5;
-  uint16_t pm10;
-  uint16_t voc_now_r_ref_r;
-  uint16_t voc_ref_r;
-  uint16_t voc_now_r;
-  am1008w_k_i2c_status pm_sensor_status_alarm;
   
 private:
   uint8_t _buffer[32];
   TwoWire *_i2cPort; //The generic connection to user's chosen I2C hardware
+
+  uint8_t _pm_operation_mode;
+  uint16_t _co2;
+  uint16_t _voc;
+  float _humidity;
+  float _temperature;
+  uint16_t _pm1p0;
+  uint16_t _pm2p5;
+  uint16_t _pm10;
+  uint16_t _voc_now_r_ref_r;
+  uint16_t _voc_ref_r;
+  uint16_t _voc_now_r;
+  am1008w_k_i2c_status _pm_sensor_status_alarm;
 
   uint8_t send_command_data(uint8_t ctrl, uint16_t data);
 };

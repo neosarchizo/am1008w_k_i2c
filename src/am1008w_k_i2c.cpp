@@ -184,12 +184,22 @@ uint8_t AM1008W_K_I2C::read_data_command(void)
 }
 
 /**
+ * PM Operation Mode
+ * @return PM Operation Mode
+ */
+uint8_t AM1008W_K_I2C::get_pm_operation_mode(void)
+{
+  return _pm_operation_mode;
+}
+
+
+/**
  * CO2
  * @return CO2
  */
 uint16_t AM1008W_K_I2C::get_co2(void)
 {
-  return co2;
+  return _co2;
 }
 
 /**
@@ -198,7 +208,7 @@ uint16_t AM1008W_K_I2C::get_co2(void)
  */
 uint16_t AM1008W_K_I2C::get_voc(void)
 {
-  return voc;
+  return _voc;
 }
 
 /**
@@ -207,7 +217,7 @@ uint16_t AM1008W_K_I2C::get_voc(void)
  */
 float AM1008W_K_I2C::get_humidity(void)
 {
-  return humidity;
+  return _humidity;
 }
 
 /**
@@ -216,7 +226,7 @@ float AM1008W_K_I2C::get_humidity(void)
  */
 float AM1008W_K_I2C::get_temperature(void)
 {
-  return temperature;
+  return _temperature;
 }
 
 /**
@@ -225,7 +235,7 @@ float AM1008W_K_I2C::get_temperature(void)
  */
 uint16_t AM1008W_K_I2C::get_pm1p0(void)
 {
-  return pm1p0;
+  return _pm1p0;
 }
 
 /**
@@ -234,7 +244,7 @@ uint16_t AM1008W_K_I2C::get_pm1p0(void)
  */
 uint16_t AM1008W_K_I2C::get_pm2p5(void)
 {
-  return pm2p5;
+  return _pm2p5;
 }
 
 /**
@@ -243,7 +253,7 @@ uint16_t AM1008W_K_I2C::get_pm2p5(void)
  */
 uint16_t AM1008W_K_I2C::get_pm10(void)
 {
-  return pm10;
+  return _pm10;
 }
 
 /**
@@ -252,7 +262,7 @@ uint16_t AM1008W_K_I2C::get_pm10(void)
  */
 uint16_t AM1008W_K_I2C::get_voc_now_r_ref_r(void)
 {
-  return voc_now_r_ref_r;
+  return _voc_now_r_ref_r;
 }
 
 /**
@@ -261,7 +271,7 @@ uint16_t AM1008W_K_I2C::get_voc_now_r_ref_r(void)
  */
 uint16_t AM1008W_K_I2C::get_voc_ref_r(void)
 {
-  return voc_ref_r;
+  return _voc_ref_r;
 }
 
 /**
@@ -270,7 +280,7 @@ uint16_t AM1008W_K_I2C::get_voc_ref_r(void)
  */
 uint16_t AM1008W_K_I2C::get_voc_now_r(void)
 {
-  return voc_now_r;
+  return _voc_now_r;
 }
 
 /**
@@ -279,5 +289,5 @@ uint16_t AM1008W_K_I2C::get_voc_now_r(void)
  */
 am1008w_k_i2c_status AM1008W_K_I2C::get_pm_sensor_status_alarm(void)
 {
-  return pm_sensor_status_alarm;
+  return _pm_sensor_status_alarm;
 }
