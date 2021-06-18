@@ -1,6 +1,6 @@
 # Syntax Coloring for AM1008_W_K_I2C Library
 # Datatypes (KEYWORD1)
-AM1008_W_K_I2C	KEYWORD1
+AM1008W_K_I2C	KEYWORD1
 
 # Methods and Functions (KEYWORD2)
 begin   KEYWORD2
